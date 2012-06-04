@@ -13,6 +13,27 @@
     <th></th>
   </tr>
 
+  <% @flights.each do |flight| %>
+    <tr>
+      <td><button>Book Now</button></td>
+      <td><%= flight.number %></td>
+      <td><%= flight.departure_code %></td>
+      <td>
+        <%= flight.departs_at.localtime.strftime("%I:%M %P") %>
+        <%= flight.departs_at.localtime.zone %>
+      </td>
+      <td><%= flight.arrival_code %></td>
+      <td></td>
+      <td><%= flight.seats %></td>
+      <td>
+        <% mc = MileageCalculator.new(flight.departure_code, flight.arrival_code) %>
+        <%= mc.miles %>
+        </td>
+    </tr>
+    
+    
+  <% end %>
+
 <% @flights.each do |flight| %>
   <tr>
     <td><%= flight.arrival_code %></td>

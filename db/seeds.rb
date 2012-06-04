@@ -6,7 +6,12 @@ if Rails.env.development?
 	codes = ['ORD', 'JFK', 'SEA', 'LAX']
 	
 	20.times do
-		departure_code, arrival_code = codes.sample(2) #TODO what is this shorthand syntax called?
+		departure_code, arrival_code = codes.sample(2) #parallel assignment
+		
+		departure_code = codes.sample(1)
+		arrival_code = codes.sample(1)
+		
+		
 		departure_time = rand(8..20)
 		flight_number = rand(100.999)
 		
@@ -16,7 +21,6 @@ if Rails.env.development?
 									departs_at: (Date.today + departure_time.hours),
 									seats: rand(0..120), 
 									distance: 0
-									
 	end
 end
 		
