@@ -1,0 +1,11 @@
+<h1><%= @user.name %></h1>
+
+<h2>Email:</h2>
+<h3><%= @user.email %></h3>
+
+<h2>Miles Earned</h2>
+<% if @user.miles.nil? %>
+  <h3><%= link_to "Book some flights!", flights_url  %></h3>
+<% else %>
+  <%= @user.miles %>
+<% end %>

@@ -3,7 +3,8 @@ class MileageCalculator
 						"ORD-SFO" => 1846,
 						"ORD-BOS" => 866,
 						"JFK-BOS" => 186,
-						"JFK-LAX" => 2475,		
+						"JFK-LAX" => 2475,
+						"ORD-LAX" => 2109,		
 					}
 					
 	def initialize(departure_airport_code, arrival_airport_code)

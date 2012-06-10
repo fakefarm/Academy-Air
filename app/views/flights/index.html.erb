@@ -1,55 +1,37 @@
-<%= link_to "sign up", new_user_url %>
-<h1>Listing flights</h1>
+<h1>Daily Flight Schedule</h1>
+
 
 <table>
-  <tr>
-    <th>Arrival code</th>
-    <th>Departs at</th>
-    <th>Departure code</th>
-    <th>Distance</th>
-    <th>Number</th>
-    <th>Seats</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <% @flights.each do |flight| %>
+  <thead>
     <tr>
-      <td><button>Book Now</button></td>
-      <td><%= flight.number %></td>
-      <td><%= flight.departure_code %></td>
-      <td>
-        <%= flight.departs_at.localtime.strftime("%I:%M %P") %>
-        <%= flight.departs_at.localtime.zone %>
-      </td>
-      <td><%= flight.arrival_code %></td>
-      <td></td>
-      <td><%= flight.seats %></td>
-      <td>
-        <% mc = MileageCalculator.new(flight.departure_code, flight.arrival_code) %>
-        <%= mc.miles %>
-        </td>
+      <th>
+      <th>Flight Number</th>
+      <th>Leaves</th>
+      <th>Time</th>
+      <th>Arrives</th>
+      <th>Time</th>
+      <th>Seats Remaining</th>
+      <th>Miles</th>
     </tr>
-    
-    
-  <% end %>
-
-<% @flights.each do |flight| %>
-  <tr>
-    <td><%= flight.arrival_code %></td>
-    <td><%= flight.departs_at %></td>
-    <td><%= flight.departure_code %></td>
-    <td><%= flight.distance %></td>
-    <td><%= flight.number %></td>
-    <td><%= flight.seats %></td>
-    <td><%= link_to 'Show', flight %></td>
-    <td><%= link_to 'Edit', edit_flight_path(flight) %></td>
-    <td><%= link_to 'Destroy', flight, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+  </thead>
+  <tbody>
+    <% @flights.each do |flight| %>
+      <tr>
+        <td><button>Book Now</button></td>
+        <td><%= flight.number %></td>
+        <td><%= flight.departure_code %></td>
+        <td>
+          <%= flight.departs_at.localtime.strftime("%I:%M %P") %>
+          <%= flight.departs_at.localtime.zone %>
+        </td>
+        <td><%= flight.arrival_code %></td>
+        <td></td>
+        <td><%= flight.seats %></td>
+        <td>
+          <% mc = MileageCalculator.new(flight.departure_code, flight.arrival_code) %>
+          <%= mc.miles %>
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New Flight', new_flight_path %>
