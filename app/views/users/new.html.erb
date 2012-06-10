@@ -1,0 +1,11 @@
+<%= form_for @user do |user| %>
+  <div>
+    <%= user.label "Please enter your name:" %>  
+    <%= user.text_field :name %>  
+  </div>
+  <div>
+    <%= user.label "Please enter your email:" %>  
+    <%= user.text_field :email %>  
+  </div>
+  <%= user.submit %>
+<% end %>
